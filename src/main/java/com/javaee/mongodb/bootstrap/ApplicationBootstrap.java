@@ -2,12 +2,10 @@ package com.javaee.mongodb.bootstrap;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
-import org.springframework.stereotype.Component;
 
 import com.javaee.mongodb.domain.Category;
 import com.javaee.mongodb.repositories.CategoryRepository;
 
-@Component
 public class ApplicationBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
 	private CategoryRepository categoryRepository;

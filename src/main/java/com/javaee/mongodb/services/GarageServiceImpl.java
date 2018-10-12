@@ -5,8 +5,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.javaee.mongodb.domain.Garage;
 import com.javaee.mongodb.repositories.GarageRepository;
@@ -40,7 +38,6 @@ public class GarageServiceImpl implements GarageService{
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
 	public Garage createNewGarage(Garage garage) {
 		if(garageRepository.findByName(garage.getName()).isEmpty()) {			
 			return garageRepository.save(garage);
@@ -50,7 +47,6 @@ public class GarageServiceImpl implements GarageService{
 	}
 
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
 	public Garage saveGarage(String id, Garage garage) {
 		garage.setId(id);
 		Garage garageSaved = garageRepository.save(garage);
@@ -58,7 +54,6 @@ public class GarageServiceImpl implements GarageService{
 	}
 	
 	@Override
-	@Transactional(propagation=Propagation.REQUIRED)
 	public void deleteGarageById(String id) {
 		garageRepository.deleteById(id);
 	}
